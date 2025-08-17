@@ -15,6 +15,8 @@ Likelihood Explanation
 Low: Attackers need to create thousands of dust positions.
 
 Proof of Concept
+
+```solidity
 function testMinimumBorrowVulnerability() public {
     address supplier  = makeAddr("supplier");
     address borrower  = makeAddr("borrower");
@@ -34,5 +36,7 @@ function testMinimumBorrowVulnerability() public {
     uint256 principal = pUSDC.borrowBalanceStored(borrower);
 assertEq(principal, 1, "Market accepted dust loan  vuln present");
 }
+```
 Recommendation
+
 Implement a minimum borrow or deposit amount that ensures positions are always economically viable to liquidate.
